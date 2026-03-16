@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sports & Fitness Store{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body { font-family: Arial, sans-serif; }
+
+        .top-bar {
+            background: #000;
+            color: #fff;
+            font-size: 14px;
+            padding: 6px 0;
+        }
+
+        footer {
+            background: #111;
+            color: #ccc;
+            padding: 40px 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .search-box {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar text-center">
+    Free Shipping Across India
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">
+            <span style="color: red;">SpoFit </span>Store
+        </a>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+
+            <!-- MENU -->
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">HOME</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'sports' %}">SPORTS</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'fitness' %}">FITNESS</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'diet_plan' %}">DIET PLAN</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">CONTACT</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
+            </ul>
+
+            <!-- SEARCH -->
+            <form class="d-flex me-3" method="GET" action="{% url 'search' %}">
+                <input class="form-control search-box"
+                       type="search"
+                       name="q"
+                       placeholder="Search..."
+                       required>
+            </form>
+
+            <!-- USER + CART -->
+            <ul class="navbar-nav">
+
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="d-flex align-items-center text-light text-decoration-none dropdown-toggle"
+               href="#" id="profileDropdown" data-bs-toggle="dropdown">
+
+               {% if user.userprofile.image %}
+                    <img src="{{ user.userprofile.image.url }}" width="40" height="40" class="rounded-circle">
+               {% else %}
+                    <img src="{% static 'store/image/e.webp' %}" width="40" height="40" class="rounded-circle">
+               {% endif %}
+
+               <span class="ms-2">{{ user.username }}</span>
+            </a>
+                
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'edit_profile' %}">
+                                Edit Profile
+                            </a>
+                        </li>
+                
+                        <li>
+                            <a class="dropdown-item" href="{% url 'logout' %}">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                    </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cart' %}">
+                        Cart ({{ request.session.cart|length|default:0 }})
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE CONTENT -->
+{% block content %}
+{% endblock %}
+
+<!-- FOOTER -->
+<footer class="mt-5">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
+                <h6>SpoFit Store</h6>
+                <p>Leader in sports & fitness equipment across India.</p>
+            </div>
+
+            <div class="col-md-4">
+                <h6>POPULAR CATEGORIES</h6>
+                <p>
+                    Pickleballs<br>
+                    Balls<br>
+                    Treadmills<br>
+                    Dumbbells
+                </p>
+            </div>
+
+            <div class="col-md-4">
+                <h6>GET IN TOUCH</h6>
+                <p>
+                    Gurugram, Haryana<br>
+                    +91-9654136136
+                </p>
+            </div>
+
+        </div>
+
+        <hr class="border-secondary">
+
+        <p class="text-center mb-0">
+            © 2026 Sports & Fitness Store
+        </p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

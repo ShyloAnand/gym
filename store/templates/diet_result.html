@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">Your Personalized Diet Plan</h2>
+
+    <div class="card p-4 shadow-sm">
+        <h5>Name: {{ user.name }}</h5>
+        <p>Height: {{ user.height }} cm</p>
+        <p>Weight: {{ user.weight }} kg</p>
+
+        <hr>
+
+        <h4>Daily Calories: {{ plan.calories }}</h4>
+
+        <p><strong>Breakfast:</strong> {{ plan.breakfast }}</p>
+        <p><strong>Lunch:</strong> {{ plan.lunch }}</p>
+        <p><strong>Dinner:</strong> {{ plan.dinner }}</p>
+    </div>
+</div>
+
+{% endblock %}

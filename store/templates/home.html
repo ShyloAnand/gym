@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home | Sports & Fitness Store{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO ================= -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-8">
+                <div class="position-relative">
+                    <img src="{% static 'store/image/fit7.avif' %}"
+                         class="img-fluid w-100 rounded"
+                         style="height:420px; object-fit:cover;">
+                    <div class="position-absolute top-50 start-0 translate-middle-y text-white p-5 hero-text">
+                        <h1 class="fw-bold">GYM & SPORTS GEAR</h1>
+                        <p class="fs-5">Train Hard. Play Strong.</p>
+                        <a href="{% url 'sports' %}" class="btn btn-warning fw-bold">
+                            Shop Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438"
+                     class="img-fluid w-100 rounded mb-3"
+                     style="height:205px; object-fit:cover;">
+                <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b"
+                     class="img-fluid w-100 rounded"
+                     style="height:205px; object-fit:cover;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORY SECTION -->
+<div class="container my-5">
+    <div class="row text-center g-4">
+        <div class="col-md-3 col-6">
+            <div class="border p-4 rounded">
+                <img src="https://cdn-icons-png.flaticon.com/512/2936/2936886.png" width="60">
+                <p class="mt-2 fw-bold">SPORTS</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <div class="border p-4 rounded">
+                <img src="https://cdn-icons-png.flaticon.com/512/2964/2964514.png" width="60">
+                <p class="mt-2 fw-bold">FITNESS AT HOME</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <div class="border p-4 rounded">
+                <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" width="60">
+                <p class="mt-2 fw-bold">COMMERCIAL GYM</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <div class="border p-4 rounded">
+                <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" width="60">
+                <p class="mt-2 fw-bold">ACCESSORIES</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="fw-bold">MOST SELLING</h4>
+        <a href="{% url 'sports' %}" class="text-decoration-none">View All</a>
+    </div>
+
+    <div class="row g-4">
+        
+        <div class="col-md-2 col-6">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'store/image/fit2.webp' %}"
+                     class="card-img-top" style="height:180px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6 class="mb-1">Cricket Ball</h6>
+                    <p class="text-success fw-bold mb-2">₹999</p>
+                    <a href="#" class="btn btn-dark btn-sm">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-6">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'store/image/fit22.jpeg' %}"
+                     class="card-img-top" style="height:180px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6 class="mb-1">Dumbbells Set</h6>
+                    <p class="text-success fw-bold mb-2">₹2499</p>
+                    <a href="#" class="btn btn-dark btn-sm">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-6">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'store/image/fit23.jpeg' %}"
+                     class="card-img-top" style="height:180px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6 class="mb-1">Yoga Mat</h6>
+                    <p class="text-success fw-bold mb-2">₹799</p>
+                    <a href="#" class="btn btn-dark btn-sm">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-6">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'store/image/fit13.jpeg' %}"
+                     class="card-img-top" style="height:180px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6 class="mb-1">Football</h6>
+                    <p class="text-success fw-bold mb-2">₹999</p>
+                    <a href="#" class="btn btn-dark btn-sm">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-6">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'store/image/fit21.jpg' %}"
+                     class="card-img-top" style="height:180px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6 class="mb-1">Treadmill</h6>
+                    <p class="text-success fw-bold mb-2">₹45999</p>
+                    <a href="#" class="btn btn-dark btn-sm">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-6">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'store/image/fit4.webp' %}"
+                     class="card-img-top" style="height:180px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6 class="mb-1">Cricket Gloves</h6>
+                    <p class="text-success fw-bold mb-2">₹499</p>
+                    <a href="#" class="btn btn-dark btn-sm">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- DIET PLAN CTA -->
+<section class="bg-dark text-white py-5">
+    <div class="container text-center">
+        <h3 class="fw-bold">Get Your Personalized Diet Plan</h3>
+        <p>Based on your height, weight & fitness goal</p>
+        <a href="{% url 'diet_plan' %}" class="btn btn-warning fw-bold">
+            Get Diet Plan
+        </a>
+    </div>
+</section>
+
+<!-- TRENDING PRODUCTS -->
+<div class="container my-5">
+    <h4 class="fw-bold mb-3">Trending Products</h4>
+
+    <div style="overflow:hidden; position:relative;">
+        <div id="slideTrack"
+             style="display:flex; width:max-content; animation:scroll 20s linear infinite;">
+
+            {% for i in "123456789" %}
+            <div style="width:220px; margin-right:20px; text-align:center;">
+                <div style="border:1px solid #ddd; border-radius:12px; padding:15px; transition:0.4s;"
+                     onmouseover="this.style.transform='translateY(-10px)';"
+                     onmouseout="this.style.transform='translateY(0)';">
+
+                    {% if forloop.counter == 1 %}
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519"
+                             style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+                    {% elif forloop.counter == 2 %}
+                        <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c"
+                             style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+                    {% elif forloop.counter == 3 %}
+                        <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c"
+                             style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+                    {% elif forloop.counter == 4 %}
+                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e"
+                             style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+                    {% elif forloop.counter == 5 %}
+                        <img src="{% static 'store/image/fit21.jpg' %}"
+                             style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+                    {% elif forloop.counter == 6 %}
+                        <img src="{% static 'store/image/fit22.jpeg' %}"
+                             style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+                    {% elif forloop.counter == 7 %}
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b"
+                             style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+                    {% elif forloop.counter == 8 %}
+                        <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1"
+                             style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1526406915894-7bcd65f60845"
+                             style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+                    {% endif %}
+
+                    <p style="margin:10px 0 5px; font-weight:bold;">
+                        Product {{ forloop.counter }}
+                    </p>
+
+                    <span style="color:green; font-weight:bold;">
+                        ₹{{ forloop.counter }}99
+                    </span>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+</style>
+
+<!-- NEWLY LAUNCHED -->
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="fw-bold">NEWLY LAUNCHED</h4>
+        <a href="{% url 'sports' %}" class="text-decoration-none">View All</a>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-3 col-6">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1526406915894-7bcd65f60845"
+                     class="card-img-top"
+                     style="height:200px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6>Smart Fitness Watch</h6>
+                    <p class="fw-bold text-success">₹6999</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <div class="card shadow-sm">
+                <img src="{% static 'store/image/fit24.jpeg' %}"
+                     class="card-img-top"
+                     style="height:200px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6>Resistance Bands</h6>
+                    <p class="fw-bold text-success">₹899</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1605296867424-35fc25c9212a"
+                     class="card-img-top"
+                     style="height:200px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6>Adjustable Bench</h6>
+                    <p class="fw-bold text-success">₹12999</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61"
+                     class="card-img-top"
+                     style="height:200px; object-fit:cover;">
+                <div class="card-body text-center">
+                    <h6>Gym Backpack</h6>
+                    <p class="fw-bold text-success">₹1499</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- DIET & BMI INFO -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088"
+                     class="img-fluid rounded shadow">
+            </div>
+
+            <div class="col-md-6">
+                <h3 class="fw-bold">Smart Diet. Better Results.</h3>
+                <p class="text-muted">
+                    Get a customized diet plan based on your height,
+                    weight, age & fitness goal.
+                </p>
+
+                <ul>
+                    <li>Calories calculation</li>
+                    <li>Balanced meals</li>
+                    <li>Weight loss / muscle gain</li>
+                </ul>
+
+                <a href="{% url 'diet_plan' %}" class="btn btn-dark fw-bold">
+                    Get Your Diet Plan
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

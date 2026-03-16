@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+
+/* Page Title Animation */
+.shop-title {
+    font-weight: 800;
+    letter-spacing: 1px;
+    animation: fadeDown 1s ease;
+}
+
+/* Card Styling */
+.product-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.product-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Image Styling */
+.shop-img {
+    height: 260px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .shop-img {
+    transform: scale(1.1);
+}
+
+/* Price Styling */
+.price-tag {
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Button Styling */
+.cart-btn {
+    border-radius: 30px;
+    transition: 0.4s ease;
+}
+
+.cart-btn:hover {
+    background: #ffc107;
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,193,7,0.6);
+}
+
+/* Search Result Animation */
+.search-result {
+    animation: fadeDown 0.8s ease;
+    font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Delay each card animation */
+.product-card:nth-child(1) { animation-delay: 0.1s; }
+.product-card:nth-child(2) { animation-delay: 0.2s; }
+.product-card:nth-child(3) { animation-delay: 0.3s; }
+.product-card:nth-child(4) { animation-delay: 0.4s; }
+
+</style>
+
+<div class="container py-5">
+
+    <h2 class="text-center mb-4 shop-title">Shop Fitness Products</h2>
+
+    {% if query %}
+        <h5 class="text-center text-muted mb-4 search-result">
+            Results for "{{ query }}"
+        </h5>
+    {% endif %}
+
+    <div class="row g-4">
+        {% for product in products %}
+        <div class="col-md-3 col-sm-6">
+            <div class="card product-card h-100">
+
+                <div style="overflow:hidden;">
+                    <img src="{{ product.image.url }}" class="card-img-top shop-img">
+                </div>
+
+                <div class="card-body text-center d-flex flex-column">
+                    <h6 class="fw-bold">{{ product.name }}</h6>
+
+                    <p class="price-tag mb-3">₹{{ product.price }}</p>
+
+                    <a href="{% url 'add_to_cart' product.id %}"
+                       class="btn btn-dark btn-sm cart-btn mt-auto">
+                        Add to Cart
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

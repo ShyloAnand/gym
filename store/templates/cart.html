@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5">
+    <h2 class="mb-4">Your Cart</h2>
+
+    {% if products %}
+    <form id="buyForm">
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Select</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>
+                        <input type="checkbox" class="product-check"
+                               data-price="{{ product.subtotal }}"
+                               onchange="updateTotal()">
+                    </td>
+                    <td>{{ product.name }}</td>
+                    <td>₹{{ product.price }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>₹{{ product.subtotal }}</td>
+                    <td>
+                        <a href="{% url 'remove_from_cart' product.id %}"
+                           class="btn btn-danger btn-sm">
+                            Remove
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h4 class="text-end">
+            Selected Total: ₹<span id="selectedTotal">0</span>
+        </h4>
+
+        <div class="text-end mt-3">
+            <button type="button" class="btn btn-success" onclick="buyNow()">
+                Buy Now
+            </button>
+        </div>
+    </form>
+
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+
+<script>
+    function updateTotal() {
+        let total = 0;
+        const checks = document.querySelectorAll('.product-check:checked');
+    
+        checks.forEach(box => {
+            total += parseFloat(box.dataset.price);
+        });
+    
+        document.getElementById('selectedTotal').innerText = total;
+    }
+    
+    function buyNow() {
+        const selected = document.querySelectorAll('.product-check:checked');
+    
+        if (selected.length === 0) {
+            alert("Please select a product to buy");
+            return;
+        }
+    
+        // redirect to payment page
+        window.location.href = "/payment/";
+    }
+    </script>
+
+{% endblock %}

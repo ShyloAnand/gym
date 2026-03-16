@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+.profile-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    margin-bottom: 15px;
+}
+</style>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="profile-card">
+
+        <h3 class="text-center mb-4">Edit Profile</h3>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Profile Image -->
+            <div class="text-center mb-3">
+                {% if request.user.userprofile.image %}
+                    <img src="{{ request.user.userprofile.image.url }}" class="profile-img" alt="Profile Image">
+                {% else %}
+                    <img src="{% static 'img/default_profile.png' %}" class="profile-img" alt="Default">
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Change Profile Picture</label>
+                <input type="file" class="form-control" name="image">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="first_name"
+                       value="{{ request.user.first_name }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" name="username"
+                       value="{{ request.user.username }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="email"
+                       value="{{ request.user.email }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
